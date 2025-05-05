@@ -1,6 +1,7 @@
 package com.example.shoppinglistapp.ui.viewmodel
 
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -77,7 +78,10 @@ class ShoppingViewModel(
             val quantity = itemQuantity.toIntOrNull() ?: 1 // default 1
 
             val item = ShoppingItem(
-                id = currentItemId!!,
+                id = currentItemId ?: run { // elvis operator on ID to account for potential null pointer errors
+                    Log.e("ShoppingItem", "Tried to update with null ID")
+                    return@launch
+                },
                 name = itemName,
                 price = price,
                 quantity = quantity,

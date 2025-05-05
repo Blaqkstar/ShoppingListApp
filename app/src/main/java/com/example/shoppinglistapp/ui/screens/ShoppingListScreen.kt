@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -32,13 +31,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.room.util.TableInfo
 import com.example.shoppinglistapp.data.ShoppingItem
-import com.example.shoppinglistapp.data.repository.ShoppingRepository
 import com.example.shoppinglistapp.ui.viewmodel.ShoppingViewModel
 import java.text.NumberFormat
 import java.util.Locale
@@ -47,7 +42,6 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Alignment
-import java.lang.String.format
 
 /**
  * Main screen composable displaying shopping list and handling user interactions
@@ -55,11 +49,10 @@ import java.lang.String.format
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ShoppingListScreen(viewModel: ShoppingViewModel) {
-    // collects state from viewmodel
-    val items by viewModel.allItems.collectAsState()
+    val items by viewModel.allItems.collectAsState() // collects state from viewmodel
     val totalCost = items.sumOf { it.price * it.quantity }
-    val currencyFormat = remember { NumberFormat.getCurrencyInstance(Locale.getDefault())}
-    var showAddDialog by remember { mutableStateOf(false) }
+    val currencyFormat = remember { NumberFormat.getCurrencyInstance(Locale.getDefault())} // should correctly display in user's local currency
+    var showAddDialog by remember { mutableStateOf(false) } // dialog is invisible by default
 
     // material design layout struct
     Scaffold(
