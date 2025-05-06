@@ -8,7 +8,7 @@ import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 /**
- * Data Access Object (DAO) for shopping items that defines database operations
+ * Data Access Object (DAO) for shopping items that defines db operations
  */
 @Dao
 interface ShoppingItemDao {

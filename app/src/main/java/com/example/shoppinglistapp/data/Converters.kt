@@ -4,8 +4,8 @@ import androidx.room.TypeConverter
 import java.util.Date
 
 /**
- * Converts complex types that Room doesn't natively support
- * These methods are apparently automatically used by Room when storing/retrieving Dates
+ * Converts data types that Room doesn't natively support
+ * Automatically used by Room when storing/retrieving Dates
  */
 class Converters {
     //converts timestamp (long) to Date when reading from db

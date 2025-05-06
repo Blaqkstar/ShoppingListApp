@@ -168,7 +168,7 @@ fun ShoppingListScreen(viewModel: ShoppingViewModel) {
 @Composable
 fun ShoppingItemCard(
     item: ShoppingItem,
-    onEdit: () -> Unit,
+    onEdit: () -> Unit, // unit is like void in Java
     onDelete: () -> Unit
 ) {
     // checked state
