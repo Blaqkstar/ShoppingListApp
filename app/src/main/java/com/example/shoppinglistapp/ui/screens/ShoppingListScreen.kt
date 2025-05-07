@@ -2,7 +2,6 @@ package com.example.shoppinglistapp.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -47,7 +45,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Blue
 
 /**
  * Main screen composable displaying shopping list and handling user interactions
@@ -219,16 +216,23 @@ fun ShoppingItemCard(
                         )
                     }
                     Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = "Qty: ${item.quantity}",
-                        fontSize = 16.sp
-                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth().padding(end=16.dp),
+                        horizontalArrangement = Arrangement.End,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "Qty: ${item.quantity}",
+                            fontSize = 16.sp
+                        )
+                    }
+
                     Spacer(modifier = Modifier.height(4.dp))
                 }
                 Column{
                     // Row 2: edit/delete buttons
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth(),//.background(Color.Blue),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
@@ -239,9 +243,9 @@ fun ShoppingItemCard(
                             fontWeight = FontWeight.Medium
                         )
                         Row(
-                            modifier = Modifier
-                                .weight(.5f),
-                            horizontalArrangement = Arrangement.End
+                            //modifier = Modifier
+                            //    .background(Color.Red),
+                            horizontalArrangement = Arrangement.spacedBy((-16).dp)
                         ){
                             IconButton(onClick = onEdit) {
                                 Icon(Icons.Default.Edit, contentDescription = "Edit")
